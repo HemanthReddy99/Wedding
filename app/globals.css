@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-rose-900 font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    @apply bg-gold-300 text-rose-900;
+  }
+}
+
+@layer utilities {
+  .frosted {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .frosted-nav {
+    background: rgba(253, 248, 243, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
