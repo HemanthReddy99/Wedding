@@ -16,6 +16,8 @@ const IMAGES = [
   { src: '/images/gallery-6.jpg', alt: 'Hemanth and Samantha' },
 ]
 
+const SLIDES = IMAGES.map((img) => ({ src: img.src, alt: img.alt }))
+
 export default function Gallery() {
   const [lightboxIndex, setLightboxIndex] = useState(-1)
 
@@ -37,12 +39,16 @@ export default function Gallery() {
           {IMAGES.map((img, i) => (
             <motion.div
               key={img.src}
+              role="button"
+              tabIndex={0}
               className="relative aspect-[4/3] overflow-hidden rounded-sm cursor-pointer group"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, delay: i * 0.08, ease: 'easeOut' }}
               onClick={() => setLightboxIndex(i)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setLightboxIndex(i) }}
+              aria-label={`Open photo ${i + 1}`}
             >
               <Image
                 src={img.src}
@@ -65,7 +71,7 @@ export default function Gallery() {
         open={lightboxIndex >= 0}
         close={() => setLightboxIndex(-1)}
         index={lightboxIndex}
-        slides={IMAGES.map((img) => ({ src: img.src, alt: img.alt }))}
+        slides={SLIDES}
         styles={{ container: { backgroundColor: 'rgba(74, 51, 40, 0.95)' } }}
       />
     </section>

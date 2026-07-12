@@ -57,6 +57,7 @@ export default function Navbar() {
             className="md:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
           >
             <span className={`block w-6 h-px bg-rose-900 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
             <span className={`block w-6 h-px bg-rose-900 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
@@ -69,7 +70,7 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-cream-50 flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 z-[60] bg-cream-50 flex flex-col items-center justify-center gap-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
