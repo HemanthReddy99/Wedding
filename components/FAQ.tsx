@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
+import CornerFlourish from './CornerFlourish'
+import BorderRule from './BorderRule'
+import SideBorderRule from './SideBorderRule'
 
 const FAQS = [
   {
@@ -37,10 +40,18 @@ export default function FAQ() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i)
 
   return (
-    <section id="faq" className="py-24 bg-cream-50">
-      <div className="max-w-site mx-auto px-6">
+    <section id="faq" className="relative py-24 bg-cream-50 overflow-hidden">
+      <BorderRule className="absolute top-0 inset-x-0 h-6 opacity-95 z-10" />
+      <BorderRule className="absolute bottom-0 inset-x-0 h-6 opacity-95 z-10" />
+      <SideBorderRule className="absolute top-0 bottom-0 left-0 w-6 opacity-95 z-10" />
+      <SideBorderRule className="absolute top-0 bottom-0 right-0 w-6 opacity-95 z-10" />
 
-        {/* Section label */}
+      <CornerFlourish className="absolute -top-3 -left-3 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 text-gold-400 pointer-events-none z-10" />
+      <CornerFlourish className="absolute -top-3 -right-3 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 text-gold-400 -scale-x-100 pointer-events-none z-10" />
+      <CornerFlourish className="absolute -bottom-3 -left-3 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 text-gold-400 -scale-y-100 pointer-events-none z-10" />
+      <CornerFlourish className="absolute -bottom-3 -right-3 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 text-gold-400 -scale-x-100 -scale-y-100 pointer-events-none z-10" />
+
+      <div className="relative max-w-site mx-auto px-8 sm:px-10">
         <AnimatedSection className="text-center mb-16">
           <span className="text-[10px] tracking-[4px] uppercase text-gold-400">Questions</span>
           <h2 className="font-serif italic font-light text-rose-900 text-5xl md:text-6xl mt-3">
@@ -49,7 +60,6 @@ export default function FAQ() {
           <div className="w-12 h-px bg-gold-400 mx-auto mt-6" />
         </AnimatedSection>
 
-        {/* Accordion */}
         <div className="max-w-2xl mx-auto space-y-3">
           {FAQS.map((faq, i) => (
             <AnimatedSection key={faq.q} delay={i * 0.06}>
@@ -91,7 +101,6 @@ export default function FAQ() {
             </AnimatedSection>
           ))}
         </div>
-
       </div>
     </section>
   )

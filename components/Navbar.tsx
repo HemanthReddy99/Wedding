@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { animatedScrollTo } from './animatedScroll'
 
 const LINKS = [
   { label: 'Our Story', href: '#our-story' },
-  { label: 'Schedule',  href: '#schedule'  },
-  { label: 'Venue',     href: '#venue'     },
-  { label: 'Gallery',   href: '#gallery'   },
-  { label: 'FAQ',       href: '#faq'       },
+  { label: 'Schedule', href: '#schedule' },
+  { label: 'Venue', href: '#venue' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 export default function Navbar() {
@@ -21,7 +21,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleLinkClick = () => setMenuOpen(false)
+  const handleNavigate = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    animatedScrollTo(href)
+  }
 
   return (
     <>
@@ -31,20 +35,20 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-site mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo / couple name */}
           <a
             href="#hero"
+            onClick={(e) => handleNavigate(e, '#hero')}
             className="font-serif italic text-xl text-rose-900 tracking-wide hover:text-gold-400 transition-colors"
           >
             H &amp; S
           </a>
 
-          {/* Desktop links */}
           <nav className="hidden md:flex items-center gap-8">
             {LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavigate(e, link.href)}
                 className="text-xs tracking-widest uppercase text-rose-700 hover:text-gold-400 transition-colors"
               >
                 {link.label}
@@ -52,7 +56,6 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Mobile hamburger */}
           <button
             className="md:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setMenuOpen((v) => !v)}
@@ -66,7 +69,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile full-screen overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -80,7 +82,7 @@ export default function Navbar() {
               <motion.a
                 key={link.href}
                 href={link.href}
-                onClick={handleLinkClick}
+                onClick={(e) => handleNavigate(e, link.href)}
                 className="font-serif italic text-4xl text-rose-900 hover:text-gold-400 transition-colors"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
