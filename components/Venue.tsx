@@ -52,8 +52,8 @@ export default function Venue() {
                 Shankaraa Foundation
               </h3>
               <div className="space-y-2 text-rose-700 text-[15px] leading-relaxed">
-                <p>Shankaraa, Kanakapura Main Road, Doddakallasandra,</p>
-                <p>Konanakunte, Bengaluru, Karnataka 560062</p>
+                <p>Shankaraa Foundation, Kanakapura Main Road,</p>
+                <p>Doddakallasandra, Bengaluru, Karnataka 560062</p>
               </div>
               <a
                 href={DIRECTIONS_URL}

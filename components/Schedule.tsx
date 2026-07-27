@@ -36,7 +36,7 @@ function StarIcon() {
 const EVENTS = [
   {
     date: '30 AUG',
-    time: '09:00 AM',
+    time: '10:20 AM',
     title: 'Muhurtham',
     venue: 'Shankaraa Foundation, Bangalore',
     description: 'The sacred moment when Hemanth and Samantha are united in the presence of family and tradition.',
@@ -44,7 +44,8 @@ const EVENTS = [
   },
   {
     date: '30 AUG',
-    time: '11:30 AM',
+    time: '12:00 PM',
+    note: 'onwards',
     title: 'Wedding Lunch',
     venue: 'Shankaraa Foundation, Bangalore',
     description: 'A celebratory feast for all our guests — a time to eat, laugh, and share in the joy of the day.',
@@ -52,7 +53,8 @@ const EVENTS = [
   },
   {
     date: '30 AUG',
-    time: '01:00 PM',
+    time: '02:00 PM',
+    note: 'onwards',
     title: 'Blessings & Farewells',
     venue: 'Shankaraa Foundation, Bangalore',
     description: 'An intimate time for family blessings, photographs, and a joyful send-off for the newlyweds.',
@@ -108,6 +110,9 @@ export default function Schedule() {
               <div className="flex flex-col items-center justify-center bg-rose-900 text-cream-50 w-20 flex-shrink-0 py-6 text-center">
                 <span className="text-[10px] tracking-[2px] uppercase opacity-80">{event.date}</span>
                 <span className="font-serif italic text-base mt-1 leading-tight">{event.time}</span>
+                {event.note && (
+                  <span className="text-[8px] tracking-[1.5px] uppercase opacity-70 mt-0.5">{event.note}</span>
+                )}
               </div>
 
               <div className="flex-1 flex items-start gap-4 p-6 border-l border-dashed border-gold-400/25">

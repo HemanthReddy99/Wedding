@@ -2,15 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-const VIDEO_ID = 'TS0moaD8gO0'
-const START_SECONDS = 40
+const VIDEO_ID = 'mOQ_sRZsHrs'
 
 interface YouTubePlayer {
   playVideo: () => void
   pauseVideo: () => void
   mute: () => void
   unMute: () => void
-  seekTo: (seconds: number, allowSeekAhead: boolean) => void
 }
 
 interface YouTubeNamespace {
@@ -34,7 +32,6 @@ declare global {
   }
 }
 
-const PLAYER_STATE_ENDED = 0
 const PLAYER_STATE_PLAYING = 1
 
 export default function BackgroundMusic() {
@@ -53,13 +50,14 @@ export default function BackgroundMusic() {
         videoId: VIDEO_ID,
         playerVars: {
           autoplay: 1,
-          start: START_SECONDS,
           controls: 0,
           disablekb: 1,
           fs: 0,
           iv_load_policy: 3,
           modestbranding: 1,
           playsinline: 1,
+          loop: 1,
+          playlist: VIDEO_ID,
         },
         events: {
           onReady: (e) => {
@@ -70,11 +68,6 @@ export default function BackgroundMusic() {
             setReady(true)
           },
           onStateChange: (e) => {
-            if (e.data === PLAYER_STATE_ENDED) {
-              e.target.seekTo(START_SECONDS, true)
-              e.target.playVideo()
-              return
-            }
             setPlaying(e.data === PLAYER_STATE_PLAYING)
           },
         },

@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: 'Is parking available at the venue?',
-    a: 'Yes, ample parking is available on-site at the venue. Detailed parking instructions will be shared closer to the date.',
+    a: 'Yes, ample parking is available on-site at the venue.',
   },
   {
     q: 'Are children welcome?',
@@ -22,15 +22,15 @@ const FAQS = [
   },
   {
     q: 'What time should I arrive?',
-    a: 'We recommend arriving by 8:45 AM so you are comfortably seated before the Muhurtham begins at 9:00 AM.',
+    a: 'We recommend arriving by 10:00 AM so you are comfortably seated before the Muhurtham begins.',
   },
   {
     q: 'Will food be served? Are dietary options available?',
-    a: 'A full traditional vegetarian wedding lunch will be served. Please let us know in advance if you have any specific dietary requirements.',
+    a: 'A full traditional vegetarian wedding lunch will be served.',
   },
   {
     q: 'How do I get to the venue?',
-    a: 'Please refer to the Venue section above for directions, transport options, and a map link. More details will be added soon.',
+    a: 'Please refer to the Venue section above for directions, transport options, and a map link. You may also choose to come via the Doddakallasandra metro station, as it is right next to the venue.',
   },
 ]
 
