@@ -8,18 +8,18 @@ import AnimatedSection from './AnimatedSection'
 const CHAPTERS = [
   {
     title: 'Connection',
-    caption: 'Our best adventure begins',
-    text: 'A quiet conversation that turned into hours — two strangers who somehow already felt familiar.',
+    caption: 'One Message. Endless Conversations',
+    text: 'A chance reconnection turned two familiar faces into lifelong companions. Sometimes the best love stories begin with a second hello.',
   },
   {
     title: 'Trust & Love',
     caption: 'Every high and low, together',
-    text: 'Through every ordinary day and every big leap, we kept choosing each other, again and again.',
+    text: 'Across cities, campuses, and years of distance, we found countless reasons to choose each other—every single day.',
   },
   {
     title: 'Forever & Always',
     caption: 'Our vows, our promise',
-    text: 'What started as a chance meeting became a lifetime we get to build, one day at a time.',
+    text: 'From countless cherished memories to the incredible support of our families, our journey together has been nothing short of magic. Now, filled with love and excitement, we\u2019re ready to tie the knot and begin the happiest chapter of our lives!',
   },
 ]
 
