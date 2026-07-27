@@ -7,8 +7,6 @@ const VIDEO_ID = 'mOQ_sRZsHrs'
 interface YouTubePlayer {
   playVideo: () => void
   pauseVideo: () => void
-  mute: () => void
-  unMute: () => void
 }
 
 interface YouTubeNamespace {
@@ -18,8 +16,8 @@ interface YouTubeNamespace {
       videoId: string
       playerVars: Record<string, number | string>
       events: {
-        onReady: (event: { target: YouTubePlayer }) => void
-        onStateChange: (event: { data: number; target: YouTubePlayer }) => void
+        onReady: () => void
+        onStateChange: (event: { data: number }) => void
       }
     }
   ) => YouTubePlayer
@@ -36,7 +34,6 @@ const PLAYER_STATE_PLAYING = 1
 
 export default function BackgroundMusic() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const buttonRef = useRef<HTMLButtonElement>(null)
   const playerRef = useRef<YouTubePlayer | null>(null)
   const [ready, setReady] = useState(false)
   const [playing, setPlaying] = useState(false)
@@ -49,7 +46,7 @@ export default function BackgroundMusic() {
       playerRef.current = new window.YT!.Player(containerRef.current, {
         videoId: VIDEO_ID,
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
           controls: 0,
           disablekb: 1,
           fs: 0,
@@ -60,14 +57,8 @@ export default function BackgroundMusic() {
           playlist: VIDEO_ID,
         },
         events: {
-          onReady: (e) => {
-            // Muted autoplay is allowed everywhere; the first tap/scroll/click
-            // anywhere on the page (handled below) unmutes it for real sound.
-            e.target.mute()
-            e.target.playVideo()
-            setReady(true)
-          },
-          onStateChange: (e) => {
+          onReady: () => setReady(true),
+          onStateChange: (e: { data: number }) => {
             setPlaying(e.data === PLAYER_STATE_PLAYING)
           },
         },
@@ -95,33 +86,11 @@ export default function BackgroundMusic() {
     }
   }, [])
 
-  // Unmute on the visitor's first interaction anywhere on the page, so the
-  // music that's already autoplaying (muted, per browser policy) gets sound
-  // without needing a dedicated click on the music button itself.
-  useEffect(() => {
-    let handled = false
-    const events: Array<keyof WindowEventMap> = ['pointerdown', 'keydown', 'scroll']
-
-    const tryUnmute = (event: Event) => {
-      if (handled) return
-      if (buttonRef.current && event.target instanceof Node && buttonRef.current.contains(event.target)) {
-        return
-      }
-      handled = true
-      playerRef.current?.unMute()
-      events.forEach((type) => window.removeEventListener(type, tryUnmute))
-    }
-
-    events.forEach((type) => window.addEventListener(type, tryUnmute, { passive: true }))
-    return () => events.forEach((type) => window.removeEventListener(type, tryUnmute))
-  }, [])
-
   const toggle = () => {
     if (!ready || !playerRef.current) return
     if (playing) {
       playerRef.current.pauseVideo()
     } else {
-      playerRef.current.unMute()
       playerRef.current.playVideo()
     }
   }
@@ -135,7 +104,6 @@ export default function BackgroundMusic() {
       />
 
       <button
-        ref={buttonRef}
         onClick={toggle}
         aria-label={playing ? 'Pause wedding song' : 'Play wedding song'}
         title={playing ? 'Pause music' : 'Play our song'}
