@@ -36,7 +36,7 @@ export default function Countdown({ target }: { target: string }) {
           <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-sm bg-cream-50/95 border border-gold-400/40 flex items-center justify-center font-serif text-2xl sm:text-3xl text-rose-900 tabular-nums">
             {mounted ? String(u.value).padStart(2, '0') : '00'}
           </div>
-          <span className="mt-2 text-[9px] tracking-[2px] uppercase text-rose-500">{u.label}</span>
+          <span className="mt-2 text-[9px] tracking-[2px] uppercase text-rose-900">{u.label}</span>
         </div>
       ))}
     </div>

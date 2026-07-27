@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
 
 const CHAPTERS = [
@@ -28,6 +28,12 @@ export default function OurStory() {
 
   const go = (dir: 1 | -1) => setIndex((i) => (i + dir + CHAPTERS.length) % CHAPTERS.length)
   const chapter = CHAPTERS[index]
+
+  const SWIPE_THRESHOLD = 40
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    if (info.offset.x <= -SWIPE_THRESHOLD || info.velocity.x <= -400) go(1)
+    else if (info.offset.x >= SWIPE_THRESHOLD || info.velocity.x >= 400) go(-1)
+  }
 
   return (
     <section id="our-story" className="relative py-24 bg-cream-50 overflow-hidden">
@@ -56,6 +62,11 @@ export default function OurStory() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -24 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.6}
+                onDragEnd={handleDragEnd}
+                className="cursor-grab active:cursor-grabbing touch-pan-y"
               >
                 <div className="bg-cream-50 border border-gold-400/25 shadow-lg p-4 pb-6">
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -63,7 +74,7 @@ export default function OurStory() {
                       src="/images/placeholder-story.jpg"
                       alt="Hemanth and Samantha"
                       fill
-                      className="object-cover"
+                      className="object-cover pointer-events-none"
                     />
                   </div>
                   <p className="font-serif italic text-rose-900 text-center text-lg mt-4">

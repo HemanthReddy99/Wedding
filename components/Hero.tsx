@@ -74,7 +74,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          className="text-[11px] tracking-[4px] uppercase text-rose-500 mb-10"
+          className="text-[11px] tracking-[4px] uppercase text-rose-900 mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -90,7 +90,7 @@ export default function Hero() {
         >
           <p className="text-[9px] tracking-[3px] uppercase text-gold-400 mb-1">Save the date</p>
           <p className="font-serif italic text-2xl text-rose-900">30th August 2026</p>
-          <p className="text-[11px] tracking-[1px] text-rose-500 mt-0.5">City, State</p>
+          <p className="text-[11px] tracking-[1px] text-rose-700 mt-0.5">Bangalore, Karnataka</p>
         </motion.div>
 
         <motion.div
@@ -98,7 +98,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <p className="text-[10px] tracking-[3px] uppercase text-rose-500 mb-4">
+          <p className="text-[10px] tracking-[3px] uppercase text-rose-900 mb-4">
             The countdown begins
           </p>
           <ScratchReveal onRevealed={handleRevealed}>
@@ -106,7 +106,7 @@ export default function Hero() {
               <Countdown target={WEDDING_DATE} />
             </div>
           </ScratchReveal>
-          <p className="font-serif italic text-rose-700 mt-5 text-sm">
+          <p className="font-serif italic text-rose-900 mt-5 text-sm">
             Until our forever begins
           </p>
         </motion.div>
@@ -118,7 +118,7 @@ export default function Hero() {
           e.preventDefault()
           animatedScrollTo('#our-story')
         }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-rose-500"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-rose-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
         transition={{ opacity: { delay: 1.4, duration: 0.5 }, y: { delay: 1.4, duration: 2, repeat: Infinity } }}

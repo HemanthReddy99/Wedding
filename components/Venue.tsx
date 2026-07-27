@@ -5,8 +5,8 @@ import BorderRule from './BorderRule'
 import SideBorderRule from './SideBorderRule'
 
 export default function Venue() {
-  const VENUE_MAP_URL = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zVmVudWU!5e0!3m2!1sen!2sin!4v1234567890'
-  const DIRECTIONS_URL = 'https://maps.google.com/?q=Venue+Address+Here'
+  const VENUE_MAP_URL = 'https://www.google.com/maps?cid=8228936970698289572&output=embed'
+  const DIRECTIONS_URL = 'https://www.google.com/maps/place/shankaraa+foundation/data=!4m2!3m1!1s0x3bae3ffb22c94d9f:0x72330e93798cf1a4?sa=X&ved=1t:242&ictx=111'
 
   return (
     <section id="venue" className="relative bg-cream-50 overflow-hidden">
@@ -41,22 +41,19 @@ export default function Venue() {
           <AnimatedSection direction="left" className="space-y-6">
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-gold-400/25 shadow-sm">
               <Image
-                src="/images/schedule-banner.png"
-                alt="South Indian temple illustration"
+                src="/images/venue.webp"
+                alt="Shankaraa Foundation wedding mandap"
                 fill
                 className="object-cover"
-                style={{ objectPosition: '50% 30%' }}
               />
             </div>
             <div className="bg-cream-50 border border-gold-400/25 rounded-sm p-7">
               <h3 className="font-serif italic font-light text-rose-900 text-2xl mb-3">
-                Venue Name Placeholder
+                Shankaraa Foundation
               </h3>
               <div className="space-y-2 text-rose-700 text-[15px] leading-relaxed">
-                <p>123 Venue Street, City, State — 000000</p>
-                <p className="text-[13px] text-rose-500 italic">
-                  Full venue details will be added closer to the date.
-                </p>
+                <p>Shankaraa, Kanakapura Main Road, Doddakallasandra,</p>
+                <p>Konanakunte, Bengaluru, Karnataka 560062</p>
               </div>
               <a
                 href={DIRECTIONS_URL}
@@ -85,8 +82,8 @@ export default function Venue() {
                 title="Wedding Venue Map"
               />
             </div>
-            <p className="text-[11px] text-rose-500 text-center mt-3 italic">
-              Map will be updated with the exact venue location.
+            <p className="text-[11px] text-rose-700 text-center mt-3 italic">
+              Shankaraa Foundation, Kanakapura Main Road, Bengaluru
             </p>
           </AnimatedSection>
         </div>
