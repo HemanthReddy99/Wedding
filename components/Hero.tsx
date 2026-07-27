@@ -43,6 +43,7 @@ export default function Hero() {
         fill
         priority
         className="object-cover"
+        style={{ objectPosition: '30% 50%' }}
       />
       <div className="absolute inset-0 bg-cream-50/55" />
       <div className="absolute inset-0 bg-gradient-to-b from-cream-50/30 via-transparent to-cream-50/70" />
