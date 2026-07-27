@@ -6,6 +6,7 @@ import Schedule from '@/components/Schedule'
 import Venue from '@/components/Venue'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
+import BackgroundMusic from '@/components/BackgroundMusic'
 
 export const metadata: Metadata = {
   title: 'Hemanth & Samantha — Save the Date',
@@ -22,6 +23,7 @@ export default function Home() {
       <Venue />
       <FAQ />
       <Footer />
+      <BackgroundMusic />
     </main>
   )
 }
