@@ -10,16 +10,19 @@ const CHAPTERS = [
     title: 'Connection',
     caption: 'One Message. Endless Conversations',
     text: 'A chance reconnection turned two familiar faces into lifelong companions. Sometimes the best love stories begin with a second hello.',
+    image: '/images/story-1.jpg',
   },
   {
     title: 'Trust & Love',
     caption: 'Every high and low, together',
     text: 'Across cities, campuses, and years of distance, we found countless reasons to choose each other—every single day.',
+    image: '/images/story-2.jpg',
   },
   {
     title: 'Forever & Always',
     caption: 'Our vows, our promise',
     text: 'From countless cherished memories to the incredible support of our families, our journey together has been nothing short of magic. Now, filled with love and excitement, we\u2019re ready to tie the knot and begin the happiest chapter of our lives!',
+    image: '/images/story-3.jpg',
   },
 ]
 
@@ -71,8 +74,8 @@ export default function OurStory() {
                 <div className="bg-cream-50 border border-gold-400/25 shadow-lg p-4 pb-6">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
-                      src="/images/placeholder-story.jpg"
-                      alt="Hemanth and Samantha"
+                      src={chapter.image}
+                      alt={`Hemanth and Samantha — ${chapter.title}`}
                       fill
                       className="object-cover pointer-events-none"
                     />
