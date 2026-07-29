@@ -7,6 +7,8 @@ const VIDEO_ID = 'mOQ_sRZsHrs'
 interface YouTubePlayer {
   playVideo: () => void
   pauseVideo: () => void
+  mute: () => void
+  unMute: () => void
 }
 
 interface YouTubeNamespace {
@@ -35,6 +37,7 @@ const PLAYER_STATE_PLAYING = 1
 export default function BackgroundMusic() {
   const containerRef = useRef<HTMLDivElement>(null)
   const playerRef = useRef<YouTubePlayer | null>(null)
+  const warmedUpRef = useRef(false)
   const [ready, setReady] = useState(false)
   const [playing, setPlaying] = useState(false)
 
@@ -57,8 +60,23 @@ export default function BackgroundMusic() {
           playlist: VIDEO_ID,
         },
         events: {
-          onReady: () => setReady(true),
+          onReady: () => {
+            setReady(true)
+            // Silently buffer a few seconds of audio in the background (muted)
+            // so the visitor's first real tap on the button starts instantly
+            // instead of waiting for YouTube to begin streaming from cold.
+            playerRef.current?.mute()
+            playerRef.current?.playVideo()
+          },
           onStateChange: (e: { data: number }) => {
+            if (!warmedUpRef.current) {
+              if (e.data === PLAYER_STATE_PLAYING) {
+                warmedUpRef.current = true
+                playerRef.current?.pauseVideo()
+                playerRef.current?.unMute()
+              }
+              return
+            }
             setPlaying(e.data === PLAYER_STATE_PLAYING)
           },
         },

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Cormorant_Garamond, Jost } from 'next/font/google'
 import './globals.css'
 
@@ -29,7 +30,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
-      <body>{children}</body>
+      <head>
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://www.google.com" />
+        <link rel="preconnect" href="https://i.ytimg.com" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+      </head>
+      <body>
+        {children}
+        <Script id="youtube-iframe-api" src="https://www.youtube.com/iframe_api" strategy="beforeInteractive" />
+      </body>
     </html>
   )
 }
