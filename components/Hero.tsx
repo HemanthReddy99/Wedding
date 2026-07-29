@@ -51,7 +51,8 @@ export default function Hero() {
 
       <div className="relative z-10 px-6 flex flex-col items-center">
         <motion.p
-          className="text-base sm:text-lg tracking-[2px] text-gold-400 mb-4"
+          lang="sa"
+          className="text-base sm:text-lg tracking-normal text-gold-400 mb-4"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
