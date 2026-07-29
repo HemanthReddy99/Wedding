@@ -21,10 +21,6 @@ const FAQS = [
     a: 'Absolutely! Children are warmly welcome. The venue has open spaces for little ones to enjoy.',
   },
   {
-    q: 'What time should I arrive?',
-    a: 'We recommend arriving by 10:00 AM so you are comfortably seated before the Muhurtham begins.',
-  },
-  {
     q: 'Will food be served? Are dietary options available?',
     a: 'A full traditional vegetarian wedding lunch will be served.',
   },
