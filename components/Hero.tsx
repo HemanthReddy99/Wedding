@@ -50,11 +50,20 @@ export default function Hero() {
       <Confetti active={celebrate} />
 
       <div className="relative z-10 px-6 flex flex-col items-center">
+        <motion.p
+          className="text-base sm:text-lg tracking-[2px] text-gold-400 mb-4"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          ॐ शरवणभवाय नमः
+        </motion.p>
+
         <motion.div
           className="flex items-center gap-3 mb-5"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
         >
           <span className="w-8 h-px bg-gold-400" />
           <span className="flex items-center justify-center w-14 h-14 rounded-full border border-gold-400 font-serif italic text-lg text-rose-900 bg-cream-50/80">
